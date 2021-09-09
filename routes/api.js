@@ -41,22 +41,22 @@ router.post("/workouts", (req,res) => {
   })
   
   
-  router.get("/workouts/range", (req,res) => {
-    const today= dayjs().add(1,"day").format("YYYY-MM-DD")
-    const sevenDayAgo= dayjs().subtract(7,"day").format("YYYY-MM-DD")
-    Workout.find({
-        day: {
-            $gte: new Date(sevenDayAgo),
-            $lt: new Date(today),
-        }
-    })
-    .sort({day:"asc"})
-    .then(results=>{
-        res.status(200).json(results)
-    })  
-    .catch(err=>{
-        res.status(400).json({message:"no workouts found"})
-    })
-  })
+//   router.get("/workouts/range", (req,res) => {
+//     const today= dayjs().add(1,"day").format("YYYY-MM-DD")
+//     const sevenDayAgo= dayjs().subtract(7,"day").format("YYYY-MM-DD")
+//     Workout.find({
+//         day: {
+//             $gte: new Date(sevenDayAgo),
+//             $lt: new Date(today),
+//         }
+//     })
+//     .sort({day:"asc"})
+//     .then(results=>{
+//         res.status(200).json(results)
+//     })  
+//     .catch(err=>{
+//         res.status(400).json({message:"no workouts found"})
+//     })
+//   })
 
 module.exports= router
